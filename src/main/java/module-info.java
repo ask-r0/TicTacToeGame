@@ -4,4 +4,8 @@ module no.game.tictactoe {
 
     opens no.game.tictactoe.main to javafx.fxml;
     exports no.game.tictactoe.main;
+
+    opens no.game.tictactoe.controller to javafx.fxml;
+    exports no.game.tictactoe.controller;
+
 }
