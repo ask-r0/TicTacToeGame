@@ -15,7 +15,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        URL url = new File("src/main/resources/no.game.tictactoe.controller/GameView.fxml").toURI().toURL();
+        URL url = new File("src/main/resources/no/game/tictactoe/controller/GameView.fxml").toURI().toURL();
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         Parent root = fxmlLoader.load();
 
