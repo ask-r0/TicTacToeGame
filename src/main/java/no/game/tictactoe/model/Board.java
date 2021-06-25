@@ -6,6 +6,10 @@ public class Board {
     private int round = 0;
     private int[] board = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
+    public int getTurn(){
+        return turn;
+    }
+
     public int winChecker(){
 
         for (int i = 0; i < 3; i++){
