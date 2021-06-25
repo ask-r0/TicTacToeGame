@@ -47,6 +47,7 @@ public class GameViewController implements Initializable {
         ImageView image = (ImageView) source;
         Integer colIndex = (GridPane.getColumnIndex(source) == null) ?  0 : (GridPane.getColumnIndex(source));
         Integer rowIndex = (GridPane.getRowIndex(source) == null) ? 0 : (GridPane.getRowIndex(source));
+        if (!gameBoard.isSqEmpty(gridSquareToInt(colIndex, rowIndex))) return;
 
         if (isAgainstComputer) {
             gameAgainstComputer(gridSquareToInt(colIndex, rowIndex), image);
