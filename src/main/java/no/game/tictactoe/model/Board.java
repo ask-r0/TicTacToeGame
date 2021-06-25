@@ -27,4 +27,9 @@ public class Board {
     public boolean isSqEmpty(int sq){
         return board[sq] == 2;
     }
+
+    public void move(int sq){
+        board[sq] = turn;
+        turn ^= 1;
+    }
 }

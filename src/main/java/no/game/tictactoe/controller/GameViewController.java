@@ -22,7 +22,7 @@ public class GameViewController implements Initializable {
         Integer rowIndex = (GridPane.getRowIndex(source) == null) ? 0 : (GridPane.getRowIndex(source));
         int sq = 0;
         if(gameBoard.isSqEmpty(sq)) {
-            gameBoard.makeMove(move); //update turn
+            gameBoard.move(sq); //update turn
         } else {
 
         }
