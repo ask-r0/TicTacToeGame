@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/MainMenuCSS.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/MainMenuCSS.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.game.tictactoe.controller.MainViewController">
    <top>
       <HBox alignment="CENTER" prefHeight="153.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -17,9 +16,9 @@
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Play Offline " />
-            <Button mnemonicParsing="false" text="Play Computer" />
-            <Button mnemonicParsing="false" text="Settings" />
+            <Button mnemonicParsing="false" onAction="#onPlayOffline" text="Play Offline " />
+            <Button mnemonicParsing="false" onAction="#onPlayComputer" text="Play Computer" />
+            <Button mnemonicParsing="false" onAction="#onSettings" text="Settings" />
          </children>
       </HBox>
    </center>
