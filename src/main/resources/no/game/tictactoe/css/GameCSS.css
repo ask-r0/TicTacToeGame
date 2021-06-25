@@ -1,0 +1,9 @@
+/** https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=455A64&secondary.color=4DD0E1 */
+.root {
+    -fx-background-color: #455a64;
+}
+
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 46;
+}
