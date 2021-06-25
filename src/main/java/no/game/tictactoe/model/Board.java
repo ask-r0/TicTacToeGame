@@ -2,10 +2,10 @@ package no.game.tictactoe.model;
 
 
 public class Board {
-    int turn = 0;
-    static int[] board = {2, 2, 2, 2, 2, 2, 2, 2, 2};
+    private int turn = 0;
+    private int[] board = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
-    static int winChecker(){
+    public int winChecker(){
 
         for (int i = 0; i < 3; i++){
             if (board[i*3] == board[i*3+1] && board[i*3+1] == board[i*3+2]){
@@ -24,7 +24,7 @@ public class Board {
         return 2;
     }
 
-    static boolean isSqEmpty(int sq){
+    public boolean isSqEmpty(int sq){
         return board[sq] == 2;
     }
 }
