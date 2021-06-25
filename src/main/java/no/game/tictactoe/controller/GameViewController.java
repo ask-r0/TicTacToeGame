@@ -3,6 +3,8 @@ package no.game.tictactoe.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import no.game.tictactoe.model.Board;
@@ -20,30 +22,17 @@ public class GameViewController implements Initializable {
         Node source = event.getPickResult().getIntersectedNode();
         Integer colIndex = (GridPane.getColumnIndex(source) == null) ?  0 : (GridPane.getColumnIndex(source));
         Integer rowIndex = (GridPane.getRowIndex(source) == null) ? 0 : (GridPane.getRowIndex(source));
-        int sq = colIndex + rowIndex*3;
-        if(gameBoard.isSqEmpty(sq)) {
-            gameBoard.move(sq);
-        } else {
+        int sq = 0;
 
-        }
-
-        if (gameBoard.winChecker() != 2){
-            // Game end
-            if (gameBoard.winChecker() == 0){
-                System.out.print("Player X won");
-            }else{
-                System.out.print("Player O won");
-            }
-        }
-
+        ImageView image = (ImageView) source;
+        Image img = new Image("/no/game/tictactoe/image/O.png");
+        image.setImage(img);
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         gameBoard = new Board();
-
-
     }
 
 
