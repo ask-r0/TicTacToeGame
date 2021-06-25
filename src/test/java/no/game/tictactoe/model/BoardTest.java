@@ -14,8 +14,6 @@ public class BoardTest {
     @Test
     @DisplayName("Beskrivende navn paa hva test gjoer")
     public void test() {
-        assertEquals(1,1);
-        assertFalse(2 == 1);
-        assertTrue(1 == 1);
+
     }
 }
