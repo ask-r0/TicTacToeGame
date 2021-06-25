@@ -3,6 +3,7 @@ package no.game.tictactoe.model;
 
 public class Board {
     private int turn = 0;
+    private int round = 0;
     private int[] board = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
     public int winChecker(){
@@ -31,5 +32,60 @@ public class Board {
     public void move(int sq){
         board[sq] = turn;
         turn ^= 1;
+        round++;
+    }
+
+    public void takeBackMove(int sq){
+        board[sq] = 2;
+        turn ^= 1;
+        round--;
+    }
+
+    public int minMax(boolean maxPlayer, int alpha, int beta){
+
+        if (round >= 9){
+            return 0;
+        }
+
+        if (winChecker() != 2){
+            if (winChecker() == 0){
+                return 1;
+            }else{
+                return -1;
+            }
+        }
+
+        if (maxPlayer){
+            int value = -10000000;
+            for (int i = 0; i < 9; i++){
+                if (isSqEmpty(i)){
+                    move(i);
+                    value = Math.max(value, minMax(false, alpha, beta));
+                    takeBackMove(i);
+
+                    if (value >= beta){
+                        break;
+                    }
+                    alpha = Math.max(alpha, value);
+                }
+            }
+            return value;
+
+        }else{
+            int value = 10000000;
+            for (int i = 0; i < 9; i++){
+                if (isSqEmpty(i)){
+                    move(i);
+                    value = Math.min(value, minMax(true, alpha, beta));
+                    takeBackMove(i);
+
+                    if (value <= alpha){
+                        break;
+                    }
+                    beta = Math.min(beta, value);
+                }
+            }
+            return value;
+        }
     }
 }
