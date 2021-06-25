@@ -79,9 +79,6 @@ public class Board {
      */
     public int minMax(boolean maxPlayer, int alpha, int beta){
 
-        if (round > 9){
-            return 0;
-        }
 
         if (winChecker() != 2){
             if (winChecker() == 0){
@@ -90,9 +87,12 @@ public class Board {
                 return -1;
             }
         }
+        if (round > 8) return 0;
 
+
+        int value;
         if (maxPlayer){
-            int value = -10000000;
+            value = -10000000;
             for (int i = 0; i < 9; i++){
                 if (isSqEmpty(i)){
                     move(i);
@@ -105,10 +105,9 @@ public class Board {
                     alpha = Math.max(alpha, value);
                 }
             }
-            return value;
 
         }else{
-            int value = 10000000;
+            value = 10000000;
             for (int i = 0; i < 9; i++){
                 if (isSqEmpty(i)){
                     move(i);
@@ -121,8 +120,8 @@ public class Board {
                     beta = Math.min(beta, value);
                 }
             }
-            return value;
         }
+        return value;
     }
 
 
