@@ -92,4 +92,47 @@ public class Board {
             return value;
         }
     }
+
+    public int search(){
+
+        int bestMove = -1;
+        int score;
+        boolean maxPlayer;
+        maxPlayer = turn == 0;
+
+        if (maxPlayer){
+            int bestScore = -1000000;
+
+            for (int i = 0; i < 9; i++){
+                if (isSqEmpty(i)){
+                    move(i);
+                    score = Math.max(bestScore, minMax(false, -1000000, 1000000));
+                    takeBackMove(i);
+
+                    if (score > bestScore){
+                        bestScore = score;
+                        bestMove = i;
+                    }
+                }
+            }
+        }else{
+            int bestScore = 1000000;
+
+            for (int i = 0; i < 9; i++){
+                if (isSqEmpty(i)){
+                    move(i);
+                    score = Math.min(bestScore, minMax(true, -1000000, 1000000));
+                    takeBackMove(i);
+
+                    if (score < bestScore){
+                        bestScore = score;
+                        bestMove = i;
+                    }
+                }
+            }
+        }
+
+        return bestMove;
+    }
 }
+

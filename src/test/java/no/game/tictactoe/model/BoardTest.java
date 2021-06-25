@@ -15,6 +15,6 @@ public class BoardTest {
     @DisplayName("Beskrivende navn paa hva test gjoer")
     public void test() {
         Board board = new Board();
-        assert board.minMax(true, -10000000, 10000000) == 0;
+        assert board.search() == 4;
     }
 }
