@@ -20,12 +20,22 @@ public class GameViewController implements Initializable {
         Node source = event.getPickResult().getIntersectedNode();
         Integer colIndex = (GridPane.getColumnIndex(source) == null) ?  0 : (GridPane.getColumnIndex(source));
         Integer rowIndex = (GridPane.getRowIndex(source) == null) ? 0 : (GridPane.getRowIndex(source));
-        int sq = 0;
+        int sq = colIndex + rowIndex*3;
         if(gameBoard.isSqEmpty(sq)) {
-            gameBoard.move(sq); //update turn
+            gameBoard.move(sq);
         } else {
 
         }
+
+        if (gameBoard.winChecker() != 2){
+            // Game end
+            if (gameBoard.winChecker() == 0){
+                System.out.print("Player X won");
+            }else{
+                System.out.print("Player O won");
+            }
+        }
+
 
     }
 
