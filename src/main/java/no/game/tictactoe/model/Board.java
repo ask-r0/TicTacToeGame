@@ -6,6 +6,10 @@ public class Board {
     private int round = 0;
     private int[] board = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
+
+    public int getRound(){
+        return round;
+    }
     /**
      * Returns current player to move
      * @return int
@@ -75,7 +79,7 @@ public class Board {
      */
     public int minMax(boolean maxPlayer, int alpha, int beta){
 
-        if (round >= 9){
+        if (round > 9){
             return 0;
         }
 
