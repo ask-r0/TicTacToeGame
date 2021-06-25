@@ -58,24 +58,28 @@ public class GameViewController implements Initializable {
     }
 
     public void gameAgainstPlayer(int clickedSquare, ImageView squareImageView) {
+        File fileO = new File("src/main/resources/no/game/tictactoe/image/O.png");
+        File fileX = new File("src/main/resources/no/game/tictactoe/image/X.png");
+
         if (gameBoard.getTurn() == 0) {
-            squareImageView.setImage(new Image("/no/game/tictactoe/image/X.png"));
+            squareImageView.setImage(new Image(fileX.toURI().toString()));
         } else {
-            squareImageView.setImage(new Image("/no/game/tictactoe/image/O.png"));
+            squareImageView.setImage(new Image(fileO.toURI().toString()));
         }
         gameBoard.move(clickedSquare);
         isGameDone();
     }
 
     public void gameAgainstComputer(int clickedSquare, ImageView squareImageView) {
-        squareImageView.setImage(new Image("/no/game/tictactoe/image/X.png"));
+        File fileO = new File("src/main/resources/no/game/tictactoe/image/O.png");
+        File fileX = new File("src/main/resources/no/game/tictactoe/image/X.png");
+
+        squareImageView.setImage(new Image(fileX.toURI().toString()));
         gameBoard.move(clickedSquare);
         if (!isGameDone()) {
             // Computer should here make the best move.
             int bestMove = gameBoard.search();
-            System.out.println(bestMove);
-            System.out.println(squares[bestMove]);
-            squares[bestMove].setImage(new Image("/no/game/tictactoe/image/O.png"));
+            squares[bestMove].setImage(new Image(fileO.toURI().toString()));
             gameBoard.move(bestMove);
         }
 
