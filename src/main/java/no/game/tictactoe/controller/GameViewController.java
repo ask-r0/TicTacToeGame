@@ -45,11 +45,12 @@ public class GameViewController implements Initializable {
         ImageView image = (ImageView) source;
         Integer colIndex = (GridPane.getColumnIndex(source) == null) ?  0 : (GridPane.getColumnIndex(source));
         Integer rowIndex = (GridPane.getRowIndex(source) == null) ? 0 : (GridPane.getRowIndex(source));
-        if (!gameBoard.isSqEmpty(gridSquareToInt(colIndex, rowIndex))) return;
 
         if (gameMode == GameMode.PLAYER_VS_COMPUTER) {
-            gameAgainstComputer(gridSquareToInt(colIndex, rowIndex), image);
+            if (!gameBoard.isSqEmpty(gridSquareToInt(colIndex, rowIndex))) return;
+            gamePlayerAgainstComputer(gridSquareToInt(colIndex, rowIndex), image);
         } else if (gameMode == GameMode.OFFLINE) {
+            if (!gameBoard.isSqEmpty(gridSquareToInt(colIndex, rowIndex))) return;
             gameAgainstPlayer(gridSquareToInt(colIndex, rowIndex), image);
         } else{
             gameComputerAgainstComputer();
@@ -66,7 +67,7 @@ public class GameViewController implements Initializable {
         isGameDone();
     }
 
-    public void gameAgainstComputer(int clickedSquare, ImageView squareImageView) {
+    public void gamePlayerAgainstComputer(int clickedSquare, ImageView squareImageView) {
         squareImageView.setImage(new Image(fileX.toURI().toString()));
         gameBoard.move(clickedSquare);
         if (!isGameDone()) {
@@ -79,16 +80,17 @@ public class GameViewController implements Initializable {
     }
 
     public void gameComputerAgainstComputer() {
-        while (!isGameDone()) {
-            int bestMove = gameBoard.search();
+        int bestMove = gameBoard.search();
 
-            if (gameBoard.getTurn() == 0){
-                squares[bestMove].setImage(new Image(fileX.toURI().toString()));
-            }else{
-                squares[bestMove].setImage(new Image(fileO.toURI().toString()));
-            }
-            gameBoard.move(bestMove);
+        if (gameBoard.getTurn() == 0){
+            squares[bestMove].setImage(new Image(fileX.toURI().toString()));
+        }else{
+            squares[bestMove].setImage(new Image(fileO.toURI().toString()));
         }
+
+        gameBoard.move(bestMove);
+
+        isGameDone();
     }
 
     /**
@@ -104,7 +106,7 @@ public class GameViewController implements Initializable {
             } else if (gameBoard.winChecker() == 1){
                 winText = "O has won this game!";
             }else{
-                winText = "The game ended in a draw.";
+                winText = "Draw";
             }
             ViewDisplayer.displayGameOverView(pane, gameMode, winText);
             return true;
