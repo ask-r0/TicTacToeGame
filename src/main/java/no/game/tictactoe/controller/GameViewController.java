@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import no.game.tictactoe.model.Board;
+import no.game.tictactoe.utility.GameMode;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class GameViewController implements Initializable {
 
     private Board gameBoard;
 
-    private boolean isAgainstComputer;
+    private GameMode gameMode;
 
     @FXML
     void onSquareClicked(MouseEvent event) {
@@ -129,8 +130,8 @@ public class GameViewController implements Initializable {
         return columnIndex + 3*rowIndex;
     }
 
-    public void setAgainstComputer(boolean isAgainstComputer) {
-        this.isAgainstComputer = isAgainstComputer;
+    public void setGameMode(GameMode gameMode) {
+        this.gameMode = gameMode;
     }
 
     public void displayMainView() throws IOException {
