@@ -1,4 +1,4 @@
-# TicTacToe Game Version 1 (Released 26/7/2021)
+# TicTacToe Game (V1, Released 26/7/2021)
 
 This Project is made by @AndySave and @ask-r0 during their first year of studying Computer Science at Norwegian University.
 
