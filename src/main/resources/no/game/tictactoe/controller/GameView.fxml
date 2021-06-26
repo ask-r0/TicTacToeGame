@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../css/GameCSS.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.game.tictactoe.controller.GameViewController">
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" stylesheets="@../css/GameCSS.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.game.tictactoe.controller.GameViewController">
    <center>
       <GridPane fx:id="grid" alignment="CENTER" gridLinesVisible="true" maxHeight="400.0" maxWidth="400.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#onSquareClicked" prefHeight="400.0" prefWidth="400.0" style="-fx-border-width: 509;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -38,11 +36,4 @@
          </children>
       </GridPane>
    </center>
-   <top>
-      <HBox alignment="BOTTOM_CENTER" prefHeight="98.0" prefWidth="900.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="title" alignment="TOP_LEFT" text="Game" />
-         </children>
-      </HBox>
-   </top>
 </BorderPane>
