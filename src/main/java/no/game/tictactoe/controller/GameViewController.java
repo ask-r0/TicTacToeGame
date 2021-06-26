@@ -1,25 +1,18 @@
 package no.game.tictactoe.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 import no.game.tictactoe.model.Board;
 import no.game.tictactoe.utility.GameMode;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -82,10 +75,7 @@ public class GameViewController implements Initializable {
             squares[bestMove].setImage(new Image(fileO.toURI().toString()));
             gameBoard.move(bestMove);
         }
-
         isGameDone(); //Checked again whether game is done.
-
-
     }
 
     public void gameComputerAgainstComputer() {
@@ -108,24 +98,15 @@ public class GameViewController implements Initializable {
      */
     public boolean isGameDone() {
         if (gameBoard.winChecker() != 2 || gameBoard.getRound() == 9) { //Game is Over.
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("GAME OVER");
+            String winText;
             if (gameBoard.winChecker() == 0) {
-                alert.setHeaderText("X has won this game!");
+                winText = "X has won this game!";
             } else if (gameBoard.winChecker() == 1){
-                alert.setHeaderText("O has won this game!");
+                winText = "O has won this game!";
             }else{
-                alert.setHeaderText("The game ended in a draw.");
+                winText = "The game ended in a draw.";
             }
-            alert.show();
-            try {
-                displayMainView();
-            } catch (IOException e) {
-                //HANDLE!!!
-            }
-
-
-
+            ViewDisplayer.displayGameOverView(pane, gameMode, winText);
             return true;
         }
         return false;
@@ -145,16 +126,4 @@ public class GameViewController implements Initializable {
     public void setGameMode(GameMode gameMode) {
         this.gameMode = gameMode;
     }
-
-    public void displayMainView() throws IOException {
-        URL url = new File("src/main/resources/no/game/tictactoe/controller/MainView.fxml").toURI().toURL();
-        FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Parent root = fxmlLoader.load();
-
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) pane.getScene().getWindow();
-        stage.setScene(scene);
-    }
-
-
 }
