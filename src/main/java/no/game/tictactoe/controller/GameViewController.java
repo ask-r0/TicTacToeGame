@@ -19,6 +19,7 @@ import no.game.tictactoe.utility.GameMode;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -53,12 +54,13 @@ public class GameViewController implements Initializable {
         Integer rowIndex = (GridPane.getRowIndex(source) == null) ? 0 : (GridPane.getRowIndex(source));
         if (!gameBoard.isSqEmpty(gridSquareToInt(colIndex, rowIndex))) return;
 
-        if (isAgainstComputer) {
+        if (gameMode == GameMode.PLAYER_VS_COMPUTER) {
             gameAgainstComputer(gridSquareToInt(colIndex, rowIndex), image);
-        } else {
+        } else if (gameMode == GameMode.OFFLINE) {
             gameAgainstPlayer(gridSquareToInt(colIndex, rowIndex), image);
+        } else{
+            gameComputerAgainstComputer();
         }
-
     }
 
     public void gameAgainstPlayer(int clickedSquare, ImageView squareImageView) {
@@ -86,6 +88,19 @@ public class GameViewController implements Initializable {
 
     }
 
+    public void gameComputerAgainstComputer() throws InterruptedException {
+        while (!isGameDone()) {
+            int bestMove = gameBoard.search();
+
+            if (gameBoard.getTurn() == 0){
+                squares[bestMove].setImage(new Image(fileX.toURI().toString()));
+            }else{
+                squares[bestMove].setImage(new Image(fileO.toURI().toString()));
+            }
+            gameBoard.move(bestMove);
+        }
+    }
+
     /**
      * Checks whether the game is done.
      * True: Displays winner, true is returned.
@@ -95,16 +110,13 @@ public class GameViewController implements Initializable {
         if (gameBoard.winChecker() != 2 || gameBoard.getRound() == 9) { //Game is Over.
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("GAME OVER");
-            if (gameBoard.getRound() == 9) {
+            if (gameBoard.winChecker() == 0) {
+                alert.setHeaderText("X has won this game!");
+            } else if (gameBoard.winChecker() == 1){
+                alert.setHeaderText("O has won this game!");
+            }else{
                 alert.setHeaderText("The game ended in a draw.");
-            } else {
-                if (gameBoard.winChecker() == 0) {
-                    alert.setHeaderText("X has won this game!");
-                } else {
-                    alert.setHeaderText("O has won this game!");
-                }
             }
-
             alert.show();
             try {
                 displayMainView();
