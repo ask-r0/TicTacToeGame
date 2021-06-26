@@ -22,6 +22,9 @@ import java.util.ResourceBundle;
 
 
 public class GameViewController implements Initializable {
+
+    final static  File fileO = new File("src/main/resources/no/game/tictactoe/image/O.png");
+    final static File fileX = new File("src/main/resources/no/game/tictactoe/image/X.png");
     @FXML private BorderPane pane;
     @FXML private GridPane grid;
 
@@ -58,9 +61,6 @@ public class GameViewController implements Initializable {
     }
 
     public void gameAgainstPlayer(int clickedSquare, ImageView squareImageView) {
-        File fileO = new File("src/main/resources/no/game/tictactoe/image/O.png");
-        File fileX = new File("src/main/resources/no/game/tictactoe/image/X.png");
-
         if (gameBoard.getTurn() == 0) {
             squareImageView.setImage(new Image(fileX.toURI().toString()));
         } else {
@@ -71,9 +71,6 @@ public class GameViewController implements Initializable {
     }
 
     public void gameAgainstComputer(int clickedSquare, ImageView squareImageView) {
-        File fileO = new File("src/main/resources/no/game/tictactoe/image/O.png");
-        File fileX = new File("src/main/resources/no/game/tictactoe/image/X.png");
-
         squareImageView.setImage(new Image(fileX.toURI().toString()));
         gameBoard.move(clickedSquare);
         if (!isGameDone()) {
