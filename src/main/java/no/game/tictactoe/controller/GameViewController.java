@@ -88,7 +88,7 @@ public class GameViewController implements Initializable {
 
     }
 
-    public void gameComputerAgainstComputer() throws InterruptedException {
+    public void gameComputerAgainstComputer() {
         while (!isGameDone()) {
             int bestMove = gameBoard.search();
 
