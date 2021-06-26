@@ -1,5 +1,6 @@
 package no.game.tictactoe.model;
-
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Board {
     private int turn = 0;
@@ -131,7 +132,7 @@ public class Board {
      */
     public int search(){
 
-        int bestMove = -1;
+        ArrayList<Integer> bestMoves = new ArrayList<>();
         int score;
         boolean maxPlayer;
         maxPlayer = turn == 0;
@@ -142,12 +143,15 @@ public class Board {
             for (int i = 0; i < 9; i++){
                 if (isSqEmpty(i)){
                     move(i);
-                    score = Math.max(bestScore, minMax(false, -1000000, 1000000));
+                    score = minMax(false, -1000000, 1000000);
                     takeBackMove(i);
 
                     if (score > bestScore){
                         bestScore = score;
-                        bestMove = i;
+                        bestMoves.clear();
+                        bestMoves.add(i);
+                    }else if (score == bestScore){
+                        bestMoves.add(i);
                     }
                 }
             }
@@ -157,18 +161,22 @@ public class Board {
             for (int i = 0; i < 9; i++){
                 if (isSqEmpty(i)){
                     move(i);
-                    score = Math.min(bestScore, minMax(true, -1000000, 1000000));
+                    score = minMax(true, -1000000, 1000000);
                     takeBackMove(i);
 
                     if (score < bestScore){
                         bestScore = score;
-                        bestMove = i;
+                        bestMoves.clear();
+                        bestMoves.add(i);
+                    }else if (score == bestScore){
+                        bestMoves.add(i);
                     }
                 }
             }
         }
 
-        return bestMove;
+        Random r = new Random();
+        return bestMoves.get(r.nextInt(bestMoves.size()));
     }
 }
 
