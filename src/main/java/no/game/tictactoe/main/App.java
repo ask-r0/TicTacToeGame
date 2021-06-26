@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,8 +20,9 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         Parent root = fxmlLoader.load();
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 400, 400);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
 
     }
