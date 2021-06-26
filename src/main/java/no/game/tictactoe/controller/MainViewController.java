@@ -18,8 +18,12 @@ public class MainViewController {
     @FXML private BorderPane pane;
 
     @FXML
+    void onComputerVsComputer(ActionEvent event) {
+
+    }
+
+    @FXML
     void onPlayComputer(ActionEvent event) throws IOException {
-        System.out.println("hi");
         URL url = new File("src/main/resources/no/game/tictactoe/controller/GameView.fxml").toURI().toURL();
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         Parent root = fxmlLoader.load();
@@ -46,9 +50,5 @@ public class MainViewController {
         stage.setScene(scene);
 
     }
-
-    @FXML
-    void onSettings(ActionEvent event) {
-            }
 
 }
