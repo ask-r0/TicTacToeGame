@@ -6,4 +6,5 @@
 .label {
     -fx-text-fill: #ffffff;
     -fx-font-size: 46;
+    -fx-font-family: "Nunito";
 }

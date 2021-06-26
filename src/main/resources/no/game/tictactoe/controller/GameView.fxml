@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" stylesheets="@../css/GameCSS.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.game.tictactoe.controller.GameViewController">
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" stylesheets="@../css/GameStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.game.tictactoe.controller.GameViewController">
    <center>
       <GridPane fx:id="grid" alignment="CENTER" gridLinesVisible="true" maxHeight="400.0" maxWidth="400.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#onSquareClicked" prefHeight="400.0" prefWidth="400.0" style="-fx-border-width: 509;" BorderPane.alignment="CENTER">
         <columnConstraints>

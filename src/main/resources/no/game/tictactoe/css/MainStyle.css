@@ -4,11 +4,18 @@
 .label {
     -fx-text-fill: #000000;
     -fx-font-size: 72;
+    -fx-font-family: "Nunito";
+}
+
+.label2 {
+    -fx-text-fill: #000000;
+    -fx-font-size: 36;
+    -fx-font-family: "Nunito";
 }
 
 .button {
     -fx-background-color: #087f23;
     -fx-text-fill: #ffffff;
     -fx-font-size: 20;
-
+    -fx-font-family: "Nunito";
 }
